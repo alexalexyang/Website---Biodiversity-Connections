@@ -28,7 +28,9 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'home',
     'search',
+    'regularpage',
 
+    # 'wordpress2puput',
     'puput',
     'compressor',
     'wagtail.contrib.wagtailsitemaps',
@@ -55,7 +57,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', # added for use with wordpress2puput
 ]
+
+# for 'django.contrib.sites'
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -87,6 +93,12 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+
+            'libraries':{
+            'demo_tags': 'mysite.templatetags.demo_tags',
+
+            }
+
         },
     },
 ]
