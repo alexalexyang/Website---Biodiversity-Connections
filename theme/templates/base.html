@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+{% load pages_tags mezzanine_tags i18n staticfiles %}
+
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+<meta name="description" content="{% block meta_description %}{% endblock %}">
+<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
+{% ifinstalled mezzanine.blog %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+{% endifinstalled %}
+
+{% compress css %}
+<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+<link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
+<!-- <link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}"> -->
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
+{% endif %}
+{% ifinstalled cartridge.shop %}
+<link rel="stylesheet" href="{% static "css/cartridge.css" %}">
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
+{% endif %}
+{% endifinstalled %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static "custom.css" %}">
+<link rel="stylesheet" href="{% static "font-awesome-4.7.0/css/font-awesome.min.css" %}">
+{% endblock %}
+{% endcompress %}
+
+{% compress js %}
+<script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
+<script src="{% static "js/bootstrap.js" %}"></script>
+<script src="{% static "js/bootstrap-extras.js" %}"></script>
+{% block extra_js %}{% endblock %}
+{% endcompress %}
+
+    <!-- Custom fonts from New Age theme -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+<!--[if lt IE 9]>
+<script src="{% static "js/html5shiv.js" %}"></script>
+<script src="{% static "js/respond.min.js" %}"></script>
+<![endif]-->
+
+{% block extra_head %}{% endblock %}
+</head>
+
+<body id="{% block body_id %}body{% endblock %}">
+
+    <header class="masthead">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-7 my-auto">
+                    <div class="header-content mx-auto">
+                        <h1 class="mb-5">Biodiversity Connections</h1>
+                        <p class="slogan">Conservation and science meetups since 201X.</p>
+                        <!-- <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Eat me.</a> -->
+                    </div>
+                    <div class="col-lg-5 my-auto">
+                    </div>
+                </div>
+            </div>
+    </header>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation" id="mainNav">
+<div class="container">
+<div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">{% trans "Toggle Navigation" %}</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    {% block navbar_title %}
+    {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+    {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
+    {% endblock%}
+</div>
+<div class="navbar-collapse collapse">
+    <!-- {% block navbar_search_form %}{% search_form "all" %}{% endblock %} -->
+    {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
+</div>
+</div>
+</div>
+
+<!-- <div class="container">
+
+{% nevercache %}
+{% if messages %}
+<div class="messages">
+{% for message in messages %}
+<div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    {{ message }}
+</div>
+{% endfor %}
+</div>
+{% endif %}
+{% endnevercache %}
+
+<h1>{% block title %}{% endblock %}</h1>
+
+<ul class="breadcrumb">
+{% spaceless %}
+{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+{% endspaceless %}
+</ul>
+
+</div> -->
+
+<div class="container">
+<div class="row">
+
+<!-- <div class="col-md-2 left">
+    {% block left_panel %} -->
+    <!-- <div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div> -->
+    <!-- {% endblock %}
+</div> -->
+
+<div class="col-md-7 middle">
+    {% block main %}{% endblock %}
+</div>
+
+<div class="col-md-3 right">
+    <!-- {% nevercache %}
+    {% include "includes/language_selector.html" %}
+    {% include "includes/user_panel.html" %}
+    {% endnevercache %}
+    <div class="panel panel-default">
+    <div class="panel-body">
+    {% block right_panel %}
+    {% ifinstalled mezzanine.twitter %}
+    {% include "twitter/tweets.html" %}
+    {% endifinstalled %}
+    {% endblock %} -->
+    </div>
+    </div>
+</div>
+
+</div>
+</div>
+
+    <!-- Contact section adapted from New Age -->
+    <section class="contact bg-primary" id="contact">
+        <div class="container">
+            <h2>We
+                <i class="fa fa-heart"></i> new friends!</h2>
+            <ul class="list-inline list-social">
+                <li class="list-inline-item social-twitter">
+                    <a href="https://twitter.com/BioDconnections" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="list-inline-item social-facebook">
+                    <a href="https://www.facebook.com/groups/1632856730333768/" target="_blank">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                </li>
+                <li class="list-inline-item email">
+                    <a href="mailto:biodiversityconnection@gmail.com">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+<!-- <footer>
+<div class="container">
+{% page_menu "pages/menus/footer.html" %}
+
+<div class="row">
+<p class="site-info text-center">
+    {% trans "Powered by" %}
+    <a href="http://mezzanine.jupo.org">Mezzanine</a>{% ifinstalled cartridge.shop %},
+    <a href="http://cartridge.jupo.org">Cartridge</a>{% endifinstalled %}
+    {% trans "and" %}
+    <a href="http://www.djangoproject.com">Django</a>
+    <span class="separator">|</span>
+    {% trans "Theme by" %} <a target="_blank" href="http://getbootstrap.com">Bootstrap</a>
+    {% ifinstalled mezzanine.mobile %}
+    <span class="separator">|</span>
+    <a href="{% url "set_device" "mobile" %}?next={{ request.path }}">{% trans "View Mobile Site" %}</a>
+    {% endifinstalled %}
+</p>
+</div>
+</div>
+</footer> -->
+
+
+<footer>
+    <div class="container">
+        <p>&copy; All Rights Reserved.</p>
+        <!-- <ul class="list-inline">
+            <li class="list-inline-item">
+                <a href="#">Privacy</a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#">Terms</a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#">FAQ</a>
+            </li>
+        </ul> -->
+    </div>
+</footer>
+
+{% block footer_js %}
+{% include "includes/footer_scripts.html" %}
+{% endblock %}
+
+</body>
+</html>
