@@ -1,3 +1,9 @@
+a, a:hover {
+    color: black;
+    font-weight: 100;
+    text-decoration: none;
+}
+
 p,
 h1,
 h2,
@@ -130,6 +136,49 @@ header.masthead .slogan {
     color: white;
     text-align: center;
 }
+
+
+
+section.features .section-heading {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+section.features .section-heading h2 {
+    margin-top: 0;
+}
+
+section.features .feature-headline-caption {
+    text-align: center;
+}
+
+section.features .section-heading p {
+    margin-bottom: 0;
+}
+
+section.features .feature-item {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 300px;
+    overflow: hidden;
+    text-align: center;
+}
+
+section.features .feature-item h3 {
+    font-size: 30px;
+    background: rgba(194, 215, 224, 0.4);
+}
+
+section.features .feature-item i {
+    font-size: 80px;
+    display: block;
+    margin-bottom: 15px;
+    background: -webkit-linear-gradient(to left, #7b4397, #dc2430);
+    background: linear-gradient(to left, #7b4397, #dc2430);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 
 
 section.contact {
