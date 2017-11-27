@@ -40,6 +40,8 @@ urlpatterns += [
 
     # url("^$", direct_to_template, {"template": "index.html"}, name="home"),
     url("^$", views.blog_post_list_index, {"template": "index.html"}, name="home"),
+    # url("^blog/", views.blog_post_list, name="blog"),
+    url("^news/", views.blog_post_list_news, name="news"),
 
     # HOMEPAGE AS AN EDITABLE PAGE IN THE PAGE TREE
     # ---------------------------------------------
@@ -103,3 +105,10 @@ urlpatterns += [
 # pages can use JS, CSS and images.
 handler404 = "mezzanine.core.views.page_not_found"
 handler500 = "mezzanine.core.views.server_error"
+
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns

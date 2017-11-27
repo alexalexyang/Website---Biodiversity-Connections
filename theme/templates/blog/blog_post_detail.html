@@ -12,16 +12,21 @@
 {{ blog_post.description }}
 {% endmetablock %}{% endblock %}
 
+{% block main %}
+
+
 {% block title %}
-{% editable blog_post.title %}{{ blog_post.title }}{% endeditable %}
+{% editable blog_post.title %}
+<h2>
+    {{ blog_post.title }}
+</h2>
+{% endeditable %}
 {% endblock %}
 
-{% block breadcrumb_menu %}
+<!-- {% block breadcrumb_menu %}
 {{ block.super }}
 <li class="active">{{ blog_post.title }}</li>
-{% endblock %}
-
-{% block main %}
+{% endblock %} -->
 
 {% block blog_post_detail_postedby %}
 {% editable blog_post.publish_date %}
