@@ -8,7 +8,7 @@ from django.views.i18n import set_language
 from mezzanine.core.views import direct_to_template
 from mezzanine.conf import settings
 
-from myproject import views
+from biodiversityconnections import views
 
 admin.autodiscover()
 
@@ -41,7 +41,8 @@ urlpatterns += [
     # url("^$", direct_to_template, {"template": "index.html"}, name="home"),
     url("^$", views.blog_post_list_index, {"template": "index.html"}, name="home"),
     # url("^blog/", views.blog_post_list, name="blog"),
-    url("^news/", views.blog_post_list_news, name="news"),
+    url("^events/", views.blog_post_list_events, name="news"),
+    # url("^news/", views.blog_post_list_news, name="news"), # change to events
 
     # HOMEPAGE AS AN EDITABLE PAGE IN THE PAGE TREE
     # ---------------------------------------------
